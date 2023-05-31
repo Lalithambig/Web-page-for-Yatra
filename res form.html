@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>form valaidation</title>
+<style type="text/css">
+    .bg{
+      background-image: url("i2.jpg");
+      background-position: 0%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+		form {
+      background-color: bisque;
+			width: 600px;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		input, select {
+			margin: 10px 0;
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+			width: 100%;
+		}
+		button {
+			padding: 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			margin-top: 10px;
+			width: 100%;
+		}
+		button:hover {
+			background-color:navy;
+		}
+		.error {
+			color: rgb(255, 0, 0);
+			font-size: 14px;
+			margin: 5px 0;
+		}
+	</style>
+<script>
+function validate() {
+  var name = document.getElementById("name").value;
+  if(name == "") {
+    window.alert("Name field is required");
+    return false;
+  }
+  else{
+    validate3();
+  }
+}
+
+function validate1() {
+  var email = document.getElementById("email").value;
+  var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if(email.match(pattern)) {
+    return true;
+    validate4();
+  }
+  else {
+    window.alert("Invalid email address");
+    return false;
+  }
+}
+function validate2() {
+  var password = document.getElementById("password").value;
+  if(password.length < 8) {
+    window.alert("Password must be at least 8 characters long");
+    return false;
+  }
+  else{
+    validate6();
+  }
+}
+function validate3() {
+  var date = document.getElementById("date").value;
+  if(date == "") {
+    window.alert("Date field is required");
+    return false;
+  }
+  else{
+    validate1();
+  }
+}
+function validate4() {
+  var age = document.getElementById("age").value;
+  if(isNaN(age)) {
+    window.alert("Age must be a number");
+    return false;
+  }
+  else{
+    validate2();
+  }
+}
+function validate5(){
+  var website = document.getElementById("website").value;
+  var pattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+  if(website.match(pattern)) {
+    return true;
+    validate8();
+  }
+  else {
+    window.alert("Invalid website address");
+    return false;
+  }
+}
+function validate6(){
+   var number=document.getElementById("number").value;
+  var phoneno = /^\d{10}$/;
+   if(number.vamatch(phoneno)){
+      validate7();
+    }
+else{
+      window.alert("Invaild phone no");
+       return false;
+}
+}
+function validate7() {
+  var gender = document.getElementsByName("gender");
+  var checked = false;
+  for(var i=0; i<gender.length; i++) {
+    if(gender[i].checked) {
+      checked = true;
+      break;
+    }
+  }
+  if(!checked) {
+    window.alert("Please select your gender");
+    return false;
+  }
+  else{
+    validate5();
+  }
+}
+function validate8() {
+  var agree = document.getElementById("agree");
+  if(!agree.checked) {
+    window.alert("You must agree to the terms and conditions");
+    return false;
+  }
+}
+</script>
+</head>
+<body class="bg"align=center>
+<form>
+<h1 style=font-family:arial;>Registeration Forms </h1>
+NAME: <input type="text" id="name" required>
+<br><br><br>
+DATE OF BIRTH:<input type="date" id="date">
+<br><br><br>
+E-MAIL:<input type="email" id="email">
+<br><br><br>
+AGE:<input type="number" id="age" >
+<br><br><br>
+PHONE NUMBER:<input type="text" id="number">
+<br><br><br>
+ADDERSS:<textarea rows="4" cols="50" name="comment" form="usrform">
+Enter text here...</textarea>
+<br><br><br>
+DISTRICT:<select id="country">
+  <option value="">--Select--</option>
+  <option value="erode">Erode</option>
+  <option value="coimbatore">Coimbatore</option>
+  <option value="namakal">Namakal</option>
+<br><br><br>
+GENDER:<input type="radio" name="gender" value="male"> Male
+<input type="radio" name="gender" value="female"> Female
+<br><br><br>
+AADHAR CARD NUMBER:<input type="text"  required>
+<br><br><br>
+<br><br><br>
+<button onclick="validate()">Submit</button>
+
+</form>
+</body>
+</html>

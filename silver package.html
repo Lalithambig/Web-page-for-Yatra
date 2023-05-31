@@ -1,0 +1,95 @@
+<html>
+<head>
+<style>
+/* color variable declared to ensure consistency */
+:root{
+ --color:hsl(40deg 65% 65%);
+}
+/* hsl used for easy tweaking */
+* {
+ border-box: box-sizing;
+ margin: 0;
+ padding: 0;
+}
+body {
+ width: 100%;
+ height: 100vh;
+ background: hsl(0, 0%, 5%);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+h1 {
+ color:var(--color);
+ font-size: clamp(5vw, 5%, 8vw);
+ padding:10px 35px;
+ position:relative;
+ transition: all .5s ease;
+}
+
+/* move transform rotation to hover state for opposite effect */
+
+h1::before{
+ content:'';
+ width:100px;
+ height: 50px;
+ position:absolute;
+ top: 0%;
+ left:0%;
+ background:hsla(0, 50%, 50%,0%);
+ border-top: var(--color) 3px solid;
+ border-left: var(--color) 3px solid;
+ transform: translate(-10px,5px) rotate(-45deg);
+ opacity: 0;
+  z-index:-1;
+ transition: all 1.2s ease; 
+}
+h1::after{
+ content:'';
+ width:100px;
+ height: 50px;
+ position:absolute;
+ bottom:-20%;
+ right: -5%;
+ background:hsla(0, 50%, 50%,0%);
+ border-bottom: var(--color) 3px solid;
+ border-right: var(--color) 3px solid;
+ transform: translate(-10px,-5px)  rotate(-45deg);
+ opacity: 0;
+ z-index:-1;
+ transition: all 1.2s ease;
+}
+
+h1:hover {
+ text-shadow: 
+  hsl(0, 50%, 50%) 4px 4px, 
+  hsl(50, 50%, 50%) 8px 8px,
+  hsl(100, 50%, 50%) 12px 12px, 
+  hsl(150, 50%, 50%) 16px 16px;
+}
+h1:hover::before{
+ transform: translate(0);
+ opacity: 1;
+}
+h1:hover::after{
+ transform: translate(0);
+ opacity: 1;
+}
+
+/* wanted to animate --color variable */
+
+/* @keyframe color{
+ from{
+  hsl(0, 0%, 100%);
+ }
+ to{
+  hsl(360, 60%, 600%);
+ }
+} */
+</style>
+</head>
+<body>
+ <a href="anchor.html"  style="text-decoration:none"><h1>SILVER PACKAGE!</h1>
+</body>
+</html>
